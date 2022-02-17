@@ -5,6 +5,7 @@ page:
   siteTitle: hcorion's zettelkasten
 
 template:
+  name: /templates/layouts/note
   theme: red
   sidebar:
     collapsed: false
