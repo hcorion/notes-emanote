@@ -7,14 +7,14 @@
   <meta charset='UTF-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <title>
-    game-development – hcorion's zettelkasten
+    Shadow-casting SpriteRenderer – hcorion's zettelkasten
   </title>
   
     
       <meta property='og:description' content />
       <meta property='og:site_name' content="hcorion's zettelkasten" />
       <meta property='og:type' content='website' />
-      <meta property='og:title' content='game-development' />
+      <meta property='og:title' content='Shadow-casting SpriteRenderer' />
     
     
       <base href='/notes-emanote/' />
@@ -94,11 +94,41 @@
             <li>
 
   <div class='text-gray-900 forest-link'>
+    <a href='game-development/unity-engine'>
+      unity-engine
+    </a>
+  </div>
+
+  
+    <ul>
+      
+        <li>
+
+  <div class='text-gray-900 forest-link'>
+    <a href='game-development'>
+      game-development
+    </a>
+  </div>
+
+  
+    <ul>
+      
+        <li>
+
+  <div class='text-gray-900 forest-link'>
     <a href=''>
       hcorion’s Zettelkasten
     </a>
   </div>
 
+  
+</li>
+      
+    </ul>
+  
+</li>
+      
+    </ul>
   
 </li>
           
@@ -112,95 +142,84 @@
             <main class='px-4 py-4'>
               <h1 class='flex items-end justify-center mb-4 p-3 bg-red-100 text-5xl font-extrabold text-black rounded'>
   <a class='z-40 tracking-tighter '>
-    game-development
+    Shadow-casting SpriteRenderer
   </a>
 </h1>
               <article class='overflow-auto'>
   <!-- What goes in this file will appear on top of note body-->
-  <nav>
-  <div class='mb-8'>
-    <header class='pb-2 mb-2 font-semibold text-gray-600'>
-      Pages matching path './*'
-    </header>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/career'>
-          Career
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/game-audio'>
-          Game Audio
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/game-math'>
-          Game Math
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/ai'>
-          Game AI
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/unreal-engine'>
-          Unreal Engine
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/random'>
-          random
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/unity-engine'>
-          unity-engine
-        </a>
-      </div>
-    
-  </div>
-</nav><div class='text-gray-400 border-t-2 inline-block pt-0.5'>
+  
     <p class='mb-3'>
-      Note: To override the auto-generated content here, create a file named: <span class='font-mono text-sm'>game-development.md</span>
+      <a href='https://forum.unity.com/threads/why-cant-sprites-gameobjects-cast-shadows.215461/' class='text-red-600 hover:underline' target='_blank' rel='noopener'>This thread</a> Describes the approach to achieveing this.
     </p>
-  </div>
+  
+    <p class='mb-3'>
+      This is what I used on a game for rendering shadows in their sprite-based cutouts.
+    </p>
+  
+    <p class='mb-3'>
+      Basically you need to create a material from the Standard material base instead of the default sprite material, then set the <em>Rendering Mode</em> in the Material to Cutout to prevent weird issues with alpha borders.
+    </p>
+  
+    <p class='mb-3'>
+      After that you’ll want to attach a script similar to the one below to force the SpriteRenderer to cast shadows, since it’s not exposed by default.
+    </p>
+  
+    <p class='mb-3'>
+      <em>Note: You can also just enter the inspector Debug mode and toggle it there, but the script is more designer/artist friendly.</em>
+    </p>
+  <div class='py-0.5 mb-3 text-sm'><pre><code class='csharp language-csharp'>[RequireComponent(typeof(SpriteRenderer))]
+[ExecuteInEditMode]
+public class ForceEnableShadows : MonoBehaviour
+{
+    private void OnEnable()
+    {
+        renderer = GetComponent&lt;Renderer&gt;();
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+    }
+}</code></pre></div>
+    <p class='mb-3'>
+      If you do want to also enable double-sided rendering of the SpriteRenderer (so it casts shadows from both sides of the SpriteRenderer), you’ll also want to add <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>Cull off</code> to the SubShader of a custom shader. As an example:
+    </p>
+  <div class='py-0.5 mb-3 text-sm'><pre><code class='csharp language-csharp'>        SubShader
+        {
+            Tags { "RenderType" = "Opaque" "PerformanceChecks" = "False" }
+            LOD 300
+            Cull off</code></pre></div>
+    <p class='mb-3'>
+      Here’s a simple complete shader based on Unity’s Mobile Diffuse:
+    </p>
+  <div class='py-0.5 mb-3 text-sm'><pre><code class='csharp language-csharp'>Shader "Custom/Simple3DSprite" {
+	Properties{
+		_MainTex("Base (RGB)", 2D) = "white" {}
+	}
+		SubShader{
+			Tags { "RenderType" = "TransparentCutout" "Queue" = "AlphaTest" }
+			LOD 150
+			Cull off
+			Blend One Zero
+			ZWrite On
+		CGPROGRAM
+		#pragma surface surf Lambert noforwardadd
+		sampler2D _MainTex;
+		struct Input {
+			float2 uv_MainTex;
+		};
+		void surf(Input IN, inout SurfaceOutput o) {
+			fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
+			o.Albedo = c.rgb;
+			o.Alpha = c.a;
+			clip(o.Alpha-.2);
+		}
+		ENDCG
+	}
+		Fallback "Mobile/VertexLit"
+}</code></pre></div>
+    <p class='mb-3'>
+      
+    </p>
+  
   <div class='flex items-center justify-center mt-2'>
-  <a class='text-gray-300 hover:text-red-600 text-sm' title='Edit this page on GitHub' href='https://github.com/hcorion/notes-emanote/edit/master/content/game-development.md'>
+  <a class='text-gray-300 hover:text-red-600 text-sm' title='Edit this page on GitHub' href='https://github.com/hcorion/notes-emanote/edit/master/content/game-development/unity-engine/shadow-casting-spriterenderer.md'>
     <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
       <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'></path>
     </svg>
@@ -214,6 +233,18 @@
               </div>
               
   <section class='flex flex-wrap items-end justify-center my-4 space-x-2 space-y-2 font-mono text-sm'>
+    
+      <a title='Tag' class='px-1 bg-gray-100 rounded hover:bg-gray-50 hover:text-red-500' href='-/tags/unity/shaders'>
+        <!-- DoNotFormat -->
+        #unity/shaders
+        <!-- DoNotFormat -->
+      </a>
+    
+      <a title='Tag' class='px-1 bg-gray-100 rounded hover:bg-gray-50 hover:text-red-500' href='-/tags/unity/shadows'>
+        <!-- DoNotFormat -->
+        #unity/shadows
+        <!-- DoNotFormat -->
+      </a>
     
   </section>
 

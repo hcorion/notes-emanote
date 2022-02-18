@@ -7,14 +7,14 @@
   <meta charset='UTF-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <title>
-    game-development – hcorion's zettelkasten
+    UE4 Version Control – hcorion's zettelkasten
   </title>
   
     
       <meta property='og:description' content />
       <meta property='og:site_name' content="hcorion's zettelkasten" />
       <meta property='og:type' content='website' />
-      <meta property='og:title' content='game-development' />
+      <meta property='og:title' content='UE4 Version Control' />
     
     
       <base href='/notes-emanote/' />
@@ -94,11 +94,41 @@
             <li>
 
   <div class='text-gray-900 forest-link'>
+    <a href='game-development/unreal-engine'>
+      Unreal Engine
+    </a>
+  </div>
+
+  
+    <ul>
+      
+        <li>
+
+  <div class='text-gray-900 forest-link'>
+    <a href='game-development'>
+      game-development
+    </a>
+  </div>
+
+  
+    <ul>
+      
+        <li>
+
+  <div class='text-gray-900 forest-link'>
     <a href=''>
       hcorion’s Zettelkasten
     </a>
   </div>
 
+  
+</li>
+      
+    </ul>
+  
+</li>
+      
+    </ul>
   
 </li>
           
@@ -112,95 +142,38 @@
             <main class='px-4 py-4'>
               <h1 class='flex items-end justify-center mb-4 p-3 bg-red-100 text-5xl font-extrabold text-black rounded'>
   <a class='z-40 tracking-tighter '>
-    game-development
+    UE4 Version Control
   </a>
 </h1>
               <article class='overflow-auto'>
   <!-- What goes in this file will appear on top of note body-->
-  <nav>
-  <div class='mb-8'>
-    <header class='pb-2 mb-2 font-semibold text-gray-600'>
-      Pages matching path './*'
-    </header>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/career'>
-          Career
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/game-audio'>
-          Game Audio
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/game-math'>
-          Game Math
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/ai'>
-          Game AI
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/unreal-engine'>
-          Unreal Engine
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/random'>
-          random
-        </a>
-      </div>
-    
-      <div class='flex flex-wrap my-2'>
-        
-          <span class='mr-2 text-right text-gray-600'>
-          </span>
-        
-        <a class='flex-1 text-red-600 mavenLinkBold border-l-2 pl-2 hover:underline' href='game-development/unity-engine'>
-          unity-engine
-        </a>
-      </div>
-    
-  </div>
-</nav><div class='text-gray-400 border-t-2 inline-block pt-0.5'>
+  
     <p class='mb-3'>
-      Note: To override the auto-generated content here, create a file named: <span class='font-mono text-sm'>game-development.md</span>
+      I’ve personally found Perforce to be the better approach for version control. Git works really well with text files, but unfortunately due to UE4’s almost completely binary nature, diffing and merges files is completely impossible, making resolving git conflicts nightmarish.
     </p>
-  </div>
+  <h2 id='perforce' class='inline-block mt-6 mb-4 text-4xl font-bold text-gray-700 border-b-2'>Perforce</h2>
+    <p class='mb-3'>
+      Good setup guide for DigitalOcean as a host: <a href='https://allarsblog.com/2014/09/25/setup-perforce-digital/' class='text-red-600 hover:underline' target='_blank' rel='noopener'>https://allarsblog.com/2014/09/25/setup-perforce-digital/</a>
+    </p>
+  
+    <p class='mb-3'>
+      Things to keep in mind:
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          maximum of 5 users if you go over a maximum file size, which is really easy to go over in even just a blueprint-only project.
+        </li>
+      
+    </ul>
+  <h2 id='git' class='inline-block mt-6 mb-4 text-4xl font-bold text-gray-700 border-b-2'>Git</h2>
+    <p class='mb-3'>
+      If git is your go-to, would highly recommend adding <a href='htps://github.com/SRombauts/UE4GitPlugin' class='text-red-600 hover:underline' target='_blank' rel='noopener'>htps://github.com/SRombauts/UE4GitPlugin</a>, since it support file locking via LFS. Last time I tried locking was really slow, so make sure you’ve got the project on a fast SSD.
+    </p>
+  
   <div class='flex items-center justify-center mt-2'>
-  <a class='text-gray-300 hover:text-red-600 text-sm' title='Edit this page on GitHub' href='https://github.com/hcorion/notes-emanote/edit/master/content/game-development.md'>
+  <a class='text-gray-300 hover:text-red-600 text-sm' title='Edit this page on GitHub' href='https://github.com/hcorion/notes-emanote/edit/master/content/game-development/unreal-engine/ue4-version-control.md'>
     <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
       <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'></path>
     </svg>
@@ -214,6 +187,30 @@
               </div>
               
   <section class='flex flex-wrap items-end justify-center my-4 space-x-2 space-y-2 font-mono text-sm'>
+    
+      <a title='Tag' class='px-1 bg-gray-100 rounded hover:bg-gray-50 hover:text-red-500' href='-/tags/ue4'>
+        <!-- DoNotFormat -->
+        #ue4
+        <!-- DoNotFormat -->
+      </a>
+    
+      <a title='Tag' class='px-1 bg-gray-100 rounded hover:bg-gray-50 hover:text-red-500' href='-/tags/version control'>
+        <!-- DoNotFormat -->
+        #version control
+        <!-- DoNotFormat -->
+      </a>
+    
+      <a title='Tag' class='px-1 bg-gray-100 rounded hover:bg-gray-50 hover:text-red-500' href='-/tags/git'>
+        <!-- DoNotFormat -->
+        #git
+        <!-- DoNotFormat -->
+      </a>
+    
+      <a title='Tag' class='px-1 bg-gray-100 rounded hover:bg-gray-50 hover:text-red-500' href='-/tags/perforce'>
+        <!-- DoNotFormat -->
+        #perforce
+        <!-- DoNotFormat -->
+      </a>
     
   </section>
 
