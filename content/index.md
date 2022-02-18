@@ -4,3 +4,7 @@ Welcome to my public Zettelkasten.
 
 ----------
 [View all content 🗄️](-/all) or [browse the content by tag 🏷️](-/tags).
+
+### [[[game-development]]]
+
+### [[[emulation]]]
