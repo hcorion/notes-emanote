@@ -6,14 +6,14 @@ date: 2022-2-17
 
 This is the root zettel that stores references to all relevant game development topics
 
-## [[[unreal-engine]]]
+## [[unreal-engine]]
 
-## [[[unity-engine]]]
+## [[unity-engine]]
 
-## [[[game-math]]]
+## [[game-math]]
 
-## [[[ai]]]
+## [[ai]]
 
-## [[[Game Audio]]]
+## [[Game Audio]]
 
-## [[[career]]]
+## [[career]]
