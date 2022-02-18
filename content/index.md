@@ -5,6 +5,10 @@ Welcome to my public Zettelkasten.
 ----------
 [View all content 🗄️](-/all) or [browse the content by tag 🏷️](-/tags).
 
-### [[[game-development]]]
+### [[game-development]]
 
-### [[[emulation]]]
+Anything related to the development of games, mainly video ones.
+
+### [[emulation]]
+
+Anything related to the development of emulators, mainly ones that play video games.
