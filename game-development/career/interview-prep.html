@@ -23,7 +23,7 @@
     <meta name='generator' content='Emanote' />
 
   
-  <link href='tailwind.css?instanceId=1886d424-6a86-4f57-9cc1-88f73b5cc530' rel='stylesheet' type='text/css' />
+  <link href='tailwind.css?instanceId=eb20e2cd-1546-4e01-ad00-3bf19b2647f8' rel='stylesheet' type='text/css' />
 
   <!-- Heist error element -->
   <style type='text/css'>
@@ -166,6 +166,70 @@ public V Get(K key)
 {
 	hashCode = GetHashCode(key);
 }</code></pre></div>
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> Heap vs Stack
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong> Stack is where local variables and structs get stored/used, getting stuff from the stack is usually really fast, since it’s usually stored on the CPU cache.
+    </p>
+  
+    <p class='mb-3'>
+      Heap is where classes/objects get allocated, and is stored on the RAM, but the CPU can store it on the local cache if it decides to do so. Heap is generally slower than the stack, but you have a lot more space
+    </p>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> Classes vs Struct
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> What is memory fragmentation?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> What is a cache miss?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> How does a garbage collector work?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
         </li>
       
     </ul>
@@ -337,7 +401,7 @@ public V Get(K key)
         </li>
       
         <li>
-          top: (1)
+          top: O(1)
         </li>
       
         <li>
@@ -416,12 +480,20 @@ public V Get(K key)
   
         </li>
       
-    </ul>
-  <h2 id='unreal-engine' class='inline-block mt-6 mb-4 text-4xl font-bold text-gray-700 border-b-2'>Unreal Engine</h2>
-    <ul class='my-3 ml-6 space-y-1 list-disc'>
-      
         <li>
           
+    <p class='mb-3'>
+      <strong>Q:</strong> What are the performance considerations of virtual functions in C++?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+        </li>
+      
+    </ul>
+  <h2 id='unreal-engine' class='inline-block mt-6 mb-4 text-4xl font-bold text-gray-700 border-b-2'>Unreal Engine</h2>
     <ul class='my-3 ml-6 space-y-1 list-disc'>
       
         <li>
@@ -429,7 +501,334 @@ public V Get(K key)
     <p class='mb-3'>
       <strong>Q:</strong> What are the main Unreal container types?
     </p>
-  <h2 id='a' class='inline-block mt-6 mb-4 text-4xl font-bold text-gray-700 border-b-2'><strong>A:</strong></h2>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          <a href='https://docs.unrealengine.com/5.0/en-US/API/Runtime/Core/Containers/' class='text-red-600 hover:underline' target='_blank' rel='noopener'>Unreal Containers Documentation</a>
+        </li>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>FBitSet&lt;&gt;</code> (C# )
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> What are the Unreal string types and their purposes?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          <a href='https://docs.unrealengine.com/5.0/en-US/API/Runtime/Core/Containers/FString/' class='text-red-600 hover:underline' target='_blank' rel='noopener'><code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>FString</code></a>
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          Standard dynamically sizeable string, similar to a c++ <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>std::string</code> or C# <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>string</code>
+        </li>
+      
+        <li>
+          Format function:<div class='py-0.5 mb-3 text-sm'><pre><code class='cpp language-cpp'>TArray&lt; FStringFormatArg &gt; args;
+args.Add( FStringFormatArg( name ) );
+args.Add( FStringFormatArg( mana ) );
+FString string = FString::Format( TEXT( "Name = {0} Mana = {1}" ), args );</code></pre></div>
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          <a href='https://docs.unrealengine.com/5.0/en-US/API/Runtime/Core/UObject/FName/' class='text-red-600 hover:underline' target='_blank' rel='noopener'><code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>FName</code></a>
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          Case-insensitive (but case-preserving (when WITH_CASE_PRESERVING_NAME is 1)
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          <a href='https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/StringHandling/FText/' class='text-red-600 hover:underline' target='_blank' rel='noopener'><code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>FText</code></a>
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          Used for text localization
+        </li>
+      
+        <li>
+          What you want to expose to designers or use in UI
+        </li>
+      
+        <li>
+          Can be converted to and from FString
+        </li>
+      
+        <li>
+          Format function:<div class='py-0.5 mb-3 text-sm'><pre><code class='csharp language-csharp'>FText::Format(LOCTEXT("ExampleFText", "You currently have {0} health left."), CurrentHealth);</code></pre></div>
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> What are the common UPROPERTY and UCLASS meta properties?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          d
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> How to use <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>UInterface</code>?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          Implementing a <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>UInterface</code>
+        </li>
+      
+        <li>
+          Checking if a class implements an <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>UInterface</code>
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> How do you create events/delegates?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          Delegate bound to UFUNCTION
+        </li>
+      
+        <li>
+          Unregistering delegate
+        </li>
+      
+        <li>
+          Delegate that takes input param
+        </li>
+      
+        <li>
+          Passing a payload with a delegate binding
+        </li>
+      
+        <li>
+          Creating a multicast delegate
+        </li>
+      
+        <li>
+          Creating a custom Event
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> How to use managed memory with Unreal?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          Allocating:
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          <h2 id='newobject' class='inline-block mt-6 mb-4 text-4xl font-bold text-gray-700 border-b-2'><code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>NewObject&lt;&gt;</code>:</h2>
+        </li>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>ConstructObject&lt;&gt;</code>
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          d
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          De-allocating
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          d
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>UPROPERTY</code> and GC
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          Forcing GC
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> How to use unmanaged memory with Unreal?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          Allocating:
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>malloc</code>/<code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>new</code>
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          De-allocating
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>free</code>/<code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>delete</code>
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> What are the Unreal smart pointers?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>TSharedPtr&lt;T&gt;</code>
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          D
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>TWeakPtr&lt;T&gt;</code>
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          D
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>TAutoPtr&lt;T&gt;</code>
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          D
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+        <li>
+          <code class='py-0.5 px-1 rounded bg-gray-700 text-sm text-white'>TScopedPtr&lt;T&gt;</code>
         </li>
       
     </ul>
@@ -438,6 +837,30 @@ public V Get(K key)
       
     </ul>
   <h2 id='unity' class='inline-block mt-6 mb-4 text-4xl font-bold text-gray-700 border-b-2'>Unity</h2>
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          
+    <p class='mb-3'>
+      <strong>Q:</strong> What is boxing in C#?
+    </p>
+  
+    <p class='mb-3'>
+      <strong>A:</strong>
+    </p>
+  
+    <ul class='my-3 ml-6 space-y-1 list-disc'>
+      
+        <li>
+          
+        </li>
+      
+    </ul>
+  
+        </li>
+      
+    </ul>
+  
   <div class='flex items-center justify-center mt-2'>
   <a class='text-gray-300 hover:text-red-600 text-sm' title='Edit this page on GitHub' href='https://github.com/hcorion/notes-emanote/edit/master/content/game-development/career/interview-prep.md'>
     <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
