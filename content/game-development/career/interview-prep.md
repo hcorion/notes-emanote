@@ -8,6 +8,10 @@ tags:
 
 # Interview Prep
 
+#### Resources
+- [18 Months of Game Programming Interviews (Reddit)](https://www.reddit.com/r/gamedev/comments/9n847g/18_months_of_game_programming_interviews/)
+- 
+
 ## Software Engineering        
 - **Q:** Implement a Dictionary
 
@@ -21,11 +25,15 @@ tags:
   	hashCode = GetHashCode(key);
   }
   ```
+- **Q:** Now convert that Dictionary into an ordered dictionary
+
+	**A:** 
+  
 - **Q:** Heap vs Stack
 
 	**A:** Stack is where local variables and structs get stored/used, getting stuff from the stack is usually really fast, since it's usually stored on the CPU cache.
     
-    Heap is where classes/objects get allocated, and is stored on the RAM, but the CPU can store it on the local cache if it decides to do so. Heap is generally slower than the stack, but you have a lot more space 
+    Heap is where classes/objects get allocated, and is stored on the RAM, but the CPU can store it on the local cache if it decides to do so. Heap is generally slower than the stack, but you have a lot more space on the heap. Things tracked by the GC are allocated on the heap.
 
 - **Q:** Classes vs Struct
 
@@ -33,12 +41,35 @@ tags:
 - **Q:** What is memory fragmentation?
 
 	**A:** 
-- **Q:** What is a cache miss?
+- **Q:** What is a cache miss and a cache hit?
 
 	**A:** 
 - **Q:** How does a garbage collector work?
 
 	**A:** 
+- **Q:** What is dot product and what is it used for?
+
+	**A:** 
+- **Q:** What is cross product and what is it used for?
+
+	**A:** 
+
+- **Q:** What's the Big O of quicksort?
+
+	**A:** O(n log n)
+
+- **Q:** UDP vs TCP?
+
+	**A:** 
+
+- **Q:** What is the difference between a tree, a binary tree and a valid binary search tree?
+
+	**A:** 
+
+- **Q:** What is the difference between a BFS (Breadth First Search) and DFS (Depth First Search) search in a binary tree?
+
+	**A:** 
+
 ## C++
 - **Q:** What is the Big O of C++ STL containers
 
@@ -95,9 +126,47 @@ tags:
         - size: O(1)
     - `map<K, V>`/`multimap<K, V>` (C#: `Dictionary<K,V>`/no equivalent for `multimap`)
     	- **Note:** `multimap` is a map which allows duplicate keys
+- **Q:** How does calling a virtual function work?
+
+	**A:** vtable stuff
+
 - **Q:** What are the performance considerations of virtual functions in C++?
 
+	**A:** vtable stuff
+
+- **Q:** What are the C++ smart pointers and what are they used for?
+
 	**A:** 
+
+- **Q:** What are the c++ multhreading primitives?
+
+	**A:** 
+
+- **Q:** What's the difference between a semaphore and a mutex?
+
+	**A:** 
+
+- **Q:** What is a C++ friend class/functions?
+
+	**A:** 
+
+- **Q:** What is the efficiency of Random Insert in a `std::vector` versus a `std::list`?
+
+	**A:** vector is O(n), list is O(1), assuming you have an iterator for where 
+
+## C#
+
+- **Q:** What is boxing in C#?
+
+	**A:**
+
+- **Q:** How does the C# garbage collector work?
+
+	**A:**
+
+- **Q:** What is the IDisposable interface used for?
+
+	**A:**
 
 ## Unreal Engine
 
@@ -178,7 +247,6 @@ tags:
 
 
 ## Unity
-- **Q:** What is boxing in C#?
+- **Q:** How does the Unity Garbage Collector differ from the dotnet C# one?
 
 	**A:**
-    - 
