@@ -12,3 +12,7 @@ Anything related to the development of games, mainly video ones.
 ### [[emulation]]
 
 Anything related to the development of emulators, mainly ones that play video games.
+
+### [[rust]]
+
+Anything related to programming in rust.
