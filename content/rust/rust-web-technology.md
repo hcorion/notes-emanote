@@ -1,0 +1,1 @@
+https://implfuture.dev/blog/rewriting-the-modern-web-in-rust

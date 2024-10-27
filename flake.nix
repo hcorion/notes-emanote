@@ -1,57 +1,37 @@
 {
-  inputs = {
-    emanote.url = "github:srid/emanote";
-    nixpkgs.follows = "emanote/nixpkgs";
-    flake-utils.follows = "emanote/flake-utils";
-    flake-compat.follows = "emanote/flake-compat";
-
-    # Hercules CI
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
-    flake-compat-ci.url = "github:hercules-ci/flake-compat-ci";
+  nixConfig = {
+    extra-substituters = "https://cache.garnix.io";
+    extra-trusted-public-keys = "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=";
   };
 
-  outputs = { self, flake-utils, emanote, nixpkgs, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem
-      (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        rec {
-          defaultApp = apps.live;
-          defaultPackage = website;
-          apps = {
-            live = rec {
-              type = "app";
-              # '' is required for escaping ${} in nix
-              script = pkgs.writeShellApplication {
-                name = "emanoteRun.sh";
-                text = ''
-                  set -xe
-                  export PORT="''${EMANOTE_PORT:-7072}"
-                  cd ./content && ${emanote.defaultPackage.${system}}/bin/emanote run --port "$PORT"
-                '';
-              };
-              program = "${script}/bin/emanoteRun.sh";
-            };
+  inputs = {
+    emanote.url = "github:srid/emanote";
+    emanote.inputs.emanote-template.follows = "";
+    nixpkgs.follows = "emanote/nixpkgs";
+    flake-parts.follows = "emanote/flake-parts";
+  };
+
+  outputs = inputs@{ self, flake-parts, nixpkgs, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = nixpkgs.lib.systems.flakeExposed;
+      imports = [ inputs.emanote.flakeModule ];
+      perSystem = { self', pkgs, system, ... }: {
+        emanote = {
+          # By default, the 'emanote' flake input is used.
+          # package = inputs.emanote.packages.${system}.default;
+          sites."default" = {
+            layers = [{ path = ./.; pathString = "."; }];
+            # port = 8080;
+            baseUrl = "/emanote-template/"; # Change to "/" (or remove it entirely) if using CNAME
+            # prettyUrls = true;
           };
-          website =
-            pkgs.runCommand "emanote-website" { }
-              ''
-                mkdir $out
-                cd ${self}/content && ${emanote.defaultPackage.${system}}/bin/emanote \
-                  gen $out
-              '';
-          devShell = pkgs.mkShell {
-            buildInputs = [ pkgs.nixpkgs-fmt ];
-          };
-        }
-      ) //
-    {
-      # Hercules CI support: https://hercules-ci.com/
-      ciNix = args@{ src }: inputs.flake-compat-ci.lib.recurseIntoFlakeWith {
-        flake = self;
-        systems = [ "x86_64-linux" ];
-        effectsArgs = args;
+        };
+        devShells.default = pkgs.mkShell {
+          buildInputs = [
+            pkgs.nixpkgs-fmt
+          ];
+        };
+        formatter = pkgs.nixpkgs-fmt;
       };
     };
 }
