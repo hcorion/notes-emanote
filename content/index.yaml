@@ -5,8 +5,8 @@ page:
   siteTitle: hcorion's zettelkasten
 
 template:
-  name: /templates/layouts/note
   theme: red
+  editBaseUrl: https://github.com/hcorion/notes-emanote/edit/master
   sidebar:
     collapsed: false
   # If you are hosting on GitLab Pages, you may want to remove this.
